@@ -26,6 +26,7 @@ import com.garytransport.R;
 import com.garytransport.service.LocationService;
 import com.rilixtech.CountryCodePicker;
 
+import am.appwise.components.ni.NoInternetDialog;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnPermissionDenied;
@@ -43,6 +44,7 @@ public class GaryMainActivity extends AppCompatActivity {
     private boolean mIsServiceStarted = false;
     private BroadcastReceiver mMessageReceiver;
     private RelativeLayout parentLayout;
+    private NoInternetDialog noInternetDialog;
 
 
 
@@ -53,6 +55,9 @@ public class GaryMainActivity extends AppCompatActivity {
 
 
         GaryMainActivityPermissionsDispatcher.locationPermissionsWithPermissionCheck(this);
+
+        noInternetDialog = new NoInternetDialog.Builder(GaryMainActivity.this).build();
+
 
         ccp =  findViewById(R.id.ccp);
         edMobileNo =  findViewById(R.id.edMobileNo);
@@ -133,6 +138,12 @@ public class GaryMainActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        noInternetDialog.onDestroy();
+    }
 
     @NeedsPermission({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
     void locationPermissions() {

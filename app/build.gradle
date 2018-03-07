@@ -39,6 +39,9 @@ dependencies {
     annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:3.1.0'
 
 
+    //no internet library dialog
+    implementation 'am.appwise.components:NoInternetDialog:1.1.3'
+
 
 }
 
