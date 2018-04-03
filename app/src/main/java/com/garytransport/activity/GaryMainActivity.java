@@ -45,7 +45,7 @@ public class GaryMainActivity extends AppCompatActivity {
     private BroadcastReceiver mMessageReceiver;
     private RelativeLayout parentLayout;
     private NoInternetDialog noInternetDialog;
-
+    private LinearLayout hideLinearLayout;
 
 
     @Override
@@ -59,10 +59,13 @@ public class GaryMainActivity extends AppCompatActivity {
         noInternetDialog = new NoInternetDialog.Builder(GaryMainActivity.this).build();
 
 
+
+
         ccp =  findViewById(R.id.ccp);
         edMobileNo =  findViewById(R.id.edMobileNo);
         btnSubmit =  findViewById(R.id.btnSubmit);
         parentLayout =  findViewById(R.id.parentLayout);
+        hideLinearLayout =  findViewById(R.id.hideLinearLayout);
 
 
         parentLayout.setOnTouchListener(new View.OnTouchListener() {
@@ -85,8 +88,6 @@ public class GaryMainActivity extends AppCompatActivity {
         });
 
 
-
-
         mMessageReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -99,9 +100,11 @@ public class GaryMainActivity extends AppCompatActivity {
 
                 if (lastKnownLoc != null) {
 
-                    Toast.makeText(GaryMainActivity.this, "Latitude: =" + lastKnownLoc.getLatitude() + " Longitude:=" + lastKnownLoc.getLongitude(),
-                            Toast.LENGTH_SHORT).show();
+                   /* Toast.makeText(GaryMainActivity.this, "Latitude: =" + lastKnownLoc.getLatitude() + " Longitude:=" + lastKnownLoc.getLongitude(),
+                            Toast.LENGTH_SHORT).show();*/
+
                 }
+
 
 
             }
@@ -115,9 +118,9 @@ public class GaryMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                ccp.registerPhoneNumberTextView(edMobileNo);
+                //ccp.registerPhoneNumberTextView(edMobileNo);
 
-                String codeWithPh = ccp.getFullNumberWithPlus();
+                String codeWithPh = ccp.getFullNumberWithPlus()+edMobileNo.getText().toString();
 
 
                 if(TextUtils.isEmpty(edMobileNo.getText().toString())){
@@ -125,8 +128,12 @@ public class GaryMainActivity extends AppCompatActivity {
                 }
                 else {
 
-                    Toast.makeText(GaryMainActivity.this,codeWithPh,Toast.LENGTH_SHORT).show();
-                    finish();
+
+                    hideLinearLayout.setVisibility(View.GONE);
+                    btnSubmit.setText("On the Way");
+
+                   // Toast.makeText(GaryMainActivity.this,codeWithPh,Toast.LENGTH_SHORT).show();
+                   // finish();
 
                 }
             }

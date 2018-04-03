@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_width="@dimen/_250sdp"
         android:layout_height="@dimen/_150sdp"
-        android:src="@drawable/garrytran"
+        android:src="@drawable/garytransport"
         android:layout_marginTop="@dimen/_30sdp"
         />
 
@@ -28,7 +28,7 @@
 
 
         <LinearLayout
-            android:id="@+id/num"
+            android:id="@+id/hideLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -59,18 +59,18 @@
                 android:padding="@dimen/_8sdp"
                 android:elevation="10dp"
                 android:background="@drawable/rounded_edittext"
-                android:textColorHint="@color/black" />
+                android:textColorHint="@color/grey" />
 
         </LinearLayout>
 
 
         <Button
             android:id="@+id/btnSubmit"
-            android:layout_below="@id/num"
+            android:layout_below="@id/hideLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_20sdp"
-            android:text="submit"
+            android:text="Submit"
             android:elevation="10dp"
             android:textColor="@android:color/white"
             android:background="@drawable/roundedbutton"

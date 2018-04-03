@@ -204,6 +204,8 @@ public class LocationService extends Service implements
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
 
+
+
     /**
      * Requests location updates from the FusedLocationApi.
      */
